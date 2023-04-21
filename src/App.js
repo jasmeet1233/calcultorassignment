@@ -1,11 +1,16 @@
 import "./App.css";
 import { useState } from "react";
 import Calculator from "./components/Calculator";
+import History from "./components/History";
 
 function App() {
   const [expression, setExpression] = useState([]);
   const [history, setHistory] = useState([]);
   const [showHistory, setShowHistory] = useState(true);
+
+  const clearHistory = () => {
+    setHistory([]);
+  };
 
   const handleClick = (value) => {
     setExpression([...expression, value]);
@@ -57,20 +62,7 @@ function App() {
         handleResult={handleResult}
       />
 
-      {showHistory && (
-        <div className="history">
-          <div className="title">
-            <p>History</p>
-            <p onClick={() => setHistory([])}>Clear</p>
-          </div>
-
-          <div className="results">
-            {history.map((data) => {
-              return <div>{data}</div>;
-            })}
-          </div>
-        </div>
-      )}
+      {showHistory && <History clearHistory={clearHistory} history={history} />}
     </div>
   );
 }
