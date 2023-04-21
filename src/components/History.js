@@ -5,7 +5,7 @@ const History = ({clearHistory, history}) => {
     <div className="history">
       <div className="title">
         <p>History</p>
-        <p onClick={clearHistory}>Delete</p>
+        <p onClick={clearHistory}>Clear</p>
       </div>
 
       <div className="results">
