@@ -10,16 +10,20 @@ button {
   /* width: 100%; */
   font-family: sans-serif;
   text-align: center;
+  justify-content: center;
 }
 
 .expression {
   height: 30px;
-  color: rgb(170, 170, 170);
+  color: black;
+  font-size: large;
 }
 
 .panel {
   display: flex;
   justify-content: center;
+  max-width: 800px;
+  margin: auto;
 }
 
 .numbers {
@@ -39,7 +43,6 @@ button {
 .operators {
   display: flex;
   flex-flow: column;
-  width: 500px;
   flex-direction: column;
 }
 
@@ -48,14 +51,36 @@ button {
   background: #7f39ff;
   border-left: none;
   border-bottom: 0;
-    width: 33%;
+  width: 160px;
   height: 40.1px;
 }
 
 .wrapper {
   display: flex;
+  justify-content: center;
+  width: 1000px;
+  margin: auto;
+  margin-top: 20px;
 }
 
 .history {
-  height: 230px
+  color: purple;
+  margin: auto;
+}
+
+.results {
+  background-color: rgb(170, 170, 170);
+  height: 180px;
+  width: 100px;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  padding-right: 20px;
+}
+
+.hamburger-line {
+height:2px;
+width: 2px;
+background-color: purple;
+margin-bottom: 1px;
 }

@@ -1,9 +1,11 @@
 import "./App.css";
 import { useState } from "react";
+import Calculator from "./components/Calculator";
 
 function App() {
   const [expression, setExpression] = useState([]);
   const [history, setHistory] = useState([]);
+  const [showHistory, setShowHistory] = useState(true);
 
   const handleClick = (value) => {
     setExpression([...expression, value]);
@@ -48,89 +50,18 @@ function App() {
 
   return (
     <div className="wrapper">
-      <div className="App">
-        <span className="expression">{expression}</span>
+     <Calculator handleClick={handleClick} specialHandler={specialHandler} expression={expression} handleResult={handleResult}/>
 
-        <section className="panel">
-          <section className="numbers">
-            <div>
-              <button onClick={() => handleClick(7)} className="number">
-                7
-              </button>
-              <button onClick={() => handleClick(8)} className="number">
-                8
-              </button>
-              <button onClick={() => handleClick(9)} className="number">
-                9
-              </button>
-            </div>
-
-            <div>
-              <button onClick={() => handleClick(4)} className="number">
-                4
-              </button>
-              <button onClick={() => handleClick(5)} className="number">
-                5
-              </button>
-              <button onClick={() => handleClick(6)} className="number">
-                6
-              </button>
-            </div>
-
-            <div>
-              <button onClick={() => handleClick(1)} className="number">
-                1
-              </button>
-              <button onClick={() => handleClick(2)} className="number">
-                2
-              </button>
-              <button onClick={() => handleClick(3)} className="number">
-                3
-              </button>
-            </div>
-
-            <div>
-              <button onClick={() => handleClick(0)} className="number">
-                0
-              </button>
-              <button onClick={() => specialHandler("c")} className="number">
-                C
-              </button>
-              <button
-                onClick={() => specialHandler("backspace")}
-                className="number"
-              >
-                {"<-"}
-              </button>
-            </div>
-          </section>
-
-          <section className="operators">
-            <button onClick={() => handleClick("÷")} className="operator">
-              ÷
-            </button>
-            <button onClick={() => handleClick("x")} className="operator">
-              x
-            </button>
-            <button onClick={() => handleClick("-")} className="operator">
-              -
-            </button>
-            <button onClick={() => handleClick("+")} className="operator">
-              +
-            </button>
-            <button onClick={() => handleResult()} className="operator">
-              =
-            </button>
-          </section>
-        </section>
-      </div>
-
-      <div className="history">
-        <p>History</p>
-        {history.map((data) => {
-          return <div>{data}</div>;
-        })}
-      </div>
+      {showHistory && (
+        <div className="history">
+          <p>History</p>
+          <div className="results">
+            {history.map((data) => {
+              return <div>{data}</div>;
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
