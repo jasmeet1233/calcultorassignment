@@ -50,11 +50,20 @@ function App() {
 
   return (
     <div className="wrapper">
-     <Calculator handleClick={handleClick} specialHandler={specialHandler} expression={expression} handleResult={handleResult}/>
+      <Calculator
+        handleClick={handleClick}
+        specialHandler={specialHandler}
+        expression={expression}
+        handleResult={handleResult}
+      />
 
       {showHistory && (
         <div className="history">
-          <p>History</p>
+          <div className="title">
+            <p>History</p>
+            <p onClick={() => setHistory([])}>Clear</p>
+          </div>
+
           <div className="results">
             {history.map((data) => {
               return <div>{data}</div>;
